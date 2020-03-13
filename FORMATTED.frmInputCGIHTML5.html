@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Forms CGI</title>
+<meta charset="utf-8">
+<style>
+    p {
+        font-size: 1.7em;
+    }
+    #psw:focus:invalid {
+        background: red;
+    }
+    #psw:focus:valid {
+        background: white;
+    }
+
+</style>
+</head>
+<body>
+    <form action="http//www.fakeURL.com/cgi-bin/entrance.cgi" method="get" enctype="application/x-www-form-urlencoded">
+    <p> <!--name tells the backend which variable is it. Required for every component used. id is to format (not required). 
+        Placeholder shows what is to insert. size is the space. maxlenth is how many characters. -->
+        Username: <input type="text" name="username" id="username" size="15" placeholder="name" accesskey="N" tabindex="2"> 
+        <!--tableindex to organize the tab order-->
+    </p>
+    <p>
+        Password: <input type="password" name="psw" id="psw" size="7" placeholder="password" maxlength="5" tabindex="1" required> 
+        <!--"required" if you want some box to be nessecerely filled before submmiting -->
+    </p>
+    <p>
+        Fee: $<input type="text" name="fee" id="fee" size="10" value="0.00">
+    </p>
+    <p>
+        Postal code: <input type="text" name="postal" id="postal" size="15" placeholder="A3A 3A3" pattern="[A-Z][0-9][A-Z]\S[A-Z][0-9][A-Z]">
+    </p>
+    <p><!--Creating radio box-->
+        Operating Systems: 
+        <br>
+        <label>Windows 10:<input type="radio" name="ostype" value="win10" checked></label> <!-- Surround the Text if you want it to select radio button too -->
+        <br>
+        <label for="lin">Linux:</label><input type="radio" name="ostype" value="linux" id="lin"> <!--Another way for the text to select the button. "for" must match "id" name-->
+        <br>
+        macOS:<input type="radio" name="ostype" value="macos"> 
+        <br>
+    </p>
+    <p><!--Creating check box-->
+        VOIP Features: 
+        <br>
+        Extended 911:<input type="checkbox" name="voip" value="x911" checked> 
+        <br>
+        caller:<input type="checkbox" name="voip" value="callerID"> 
+        <br>
+    </p>
+    <p><!--Creating a group box-->
+        <fieldset>
+            <legend>VOIP Features</legend>
+            <br>
+            Extended 911:<input type="checkbox" name="voip" value="x911" checked> 
+            <br>
+            caller:<input type="checkbox" name="voip" value="callerID"> 
+        </fieldset>
+    </p>
+    <p><!--Creating selecting box-->
+        Apply 0.01c/min to which country:
+        <br>
+        <select name="cntry" size="4" multiple> <!-- Multiple is to select more than one pressing CTRL -->
+            <option value="au">Australia</option>
+            <option value="uk">UK</option>
+            <option value="mx">Mexico</option>
+            <option value="ca">Canada</option>
+        </select>
+    </p>
+    <p><!--Creating a label in a selecting box-->
+        Apply 0.01c/min to which country:
+        <br>
+        <select name="cntry" size="6" multiple> 
+            <optgroup label="Cheapest rates:">
+                <option value="au">Australia</option>
+                <option value="uk">UK</option>
+            </optgroup>
+            <optgroup label="Second cheapest rates:">
+                <option value="mx">Mexico</option>
+                <option value="ca">Canada</option>
+            </optgroup>
+        </select>
+    </p>
+    <p>
+        Add comments:
+        <textarea name="comments" rows="5" cols="500">Example of initial text</textarea>
+    </p>
+    <p>
+        <input list="credit" name="cc">
+        <datalist id="credit"> <!-- data id has to match input list -->
+            <option value="visa">
+            <option value="master">
+        </datalist>
+    </p>
+    <p>
+        Slider choose between 1 to 100
+        <br>
+        Low <input type="range" name="choice" min="1" max="100" step="2"> High <!-- step is the size of each moviment -->
+    </p>
+    <p>
+        Spinner
+        <br>
+        <input type="number" name="num" min="1" max="10" step="2">
+    </p>
+    <p>
+        Colour
+        <br>
+        <input type="color" name="colour">
+    </p>
+    <p>
+        Calendar
+        <br>
+        <input type="date" name="calendar">
+    </p>
+    <p>
+        <input type="hidden" name="email" value="fail mthem all"> <!-- It's hidden but when you click submit, it's sent to the server -->
+    </p>
+    <p>
+        <input type="submit" name="sub" value="Send data">
+        <input type="reset" name="reset" value="Reset">
+        <input type="button" name="butt" value="Message Box" onclick="alert('Hello')">
+        <input type="image" name="bImage" src="submit.gif" width="200"> <!-- This is a submit button! -->
+        <br>
+        <button type="button"><img src="submit.gif">Press me</button> <!-- This is NOT a submit button! -->
+        <button type="submit"><img src="submit.gif">Press me</button> <!-- This is a submit button! -->
+    </p>
+
+    </form>	
+</body>
+</html>
